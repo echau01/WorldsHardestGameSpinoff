@@ -1,4 +1,4 @@
-# WorldsHardestGameRemake
+# WorldsHardestGameSpinoff
 
 This [World's Hardest Game](https://www.coolmathgames.com/0-worlds-hardest-game) spinoff has 4 challenging levels. You control a red block. In 
 each level, you must make your way toward the goal (the green area) whilst avoiding the moving
