@@ -269,7 +269,7 @@ class Level_01(Level):
         tips_text = tips_font.render("Move your red block using the arrow keys.", False, RED)
         surface.blit(tips_text, [60, 60])
         tips_text = tips_font.render("Get to the green goal ==>", False, LIME_GREEN)
-        surface.blit(tips_text, [320, 450])
+        surface.blit(tips_text, [self.goal.rect.x - tips_text.get_width() - 50, SCREEN_HEIGHT - tips_text.get_height() - 100])
         tips_text = tips_font.render("Don't touch the black blocks!", False, BLACK)
         surface.blit(tips_text, [60, 140])
 
@@ -464,7 +464,7 @@ def main():
     # Set screen properties
     size = (SCREEN_WIDTH, SCREEN_HEIGHT)
     screen = pygame.display.set_mode(size)
-    pygame.display.set_caption("World's Hardest Game Ripoff")
+    pygame.display.set_caption("World's Hardest Game Spin-off")
 
     done = False
 
@@ -542,11 +542,13 @@ def main():
                 done = True # Breaks out of the loop
 
             if 8 * FPS < congratulations_text_ticks <= 12 * FPS:
-                congratulations_text = congratulations_font.render("World's Hardest Game", False, GREEN)
-                screen.blit(congratulations_text, [150, 272])
+                congratulations_text = congratulations_font.render("World's Hardest Game Spin-off", False, GREEN)
+                screen.blit(congratulations_text, [SCREEN_WIDTH / 2 - congratulations_text.get_width() / 2,
+					SCREEN_HEIGHT / 2 - congratulations_text.get_height()])
                 if 9.5 * FPS < congratulations_text_ticks <= 12 * FPS:
                     congratulations_text = congratulations_font.render("made by Eugene Chau", False, GREEN)
-                    screen.blit(congratulations_text, [149, 320])
+                    screen.blit(congratulations_text, [SCREEN_WIDTH / 2 - congratulations_text.get_width() / 2,
+						SCREEN_HEIGHT / 2])
                 pygame.display.flip()
                 clock.tick(FPS)
                 continue
@@ -554,7 +556,8 @@ def main():
             for i in range(4):
                 if 2 * i * FPS < congratulations_text_ticks <= 2 * (i + 1) * FPS:
                     congratulations_text = congratulations_font.render(game_over_messages[i], False, GREEN)
-                    screen.blit(congratulations_text, [400 - 11.5 * len(game_over_messages[i]), 272])
+                    screen.blit(congratulations_text, [SCREEN_WIDTH / 2 - congratulations_text.get_width() / 2,
+						SCREEN_HEIGHT / 2 - congratulations_text.get_height() / 2])
                     pygame.display.flip()
                     clock.tick(FPS)
 
@@ -581,13 +584,14 @@ def main():
         # are on.
         level_font = pygame.font.SysFont("Arial", 20, True)
         level_text = level_font.render("Level " + str(current_level_index + 1), False, BLUE)
-        screen.blit(level_text, [700, 10])
+        screen.blit(level_text, [SCREEN_WIDTH - level_text.get_width() - 10, 10])
 
         # Checks if the player has reached the goal.
         if current_level.player.reached_goal:
             # Displays a message to the player saying they beat the level.
             congratulations_text = congratulations_font.render("Level " + str(current_level_index + 1) + " complete!", False, GREEN)
-            screen.blit(congratulations_text, [201, 272])
+            screen.blit(congratulations_text, [SCREEN_WIDTH / 2 - congratulations_text.get_width() / 2,
+				SCREEN_HEIGHT / 2 - congratulations_text.get_height() / 2])
             congratulations_text_showing = True
             congratulations_text_ticks += 1
 
