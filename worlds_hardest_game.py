@@ -1,14 +1,17 @@
 '''
 worlds_hardest_game.py
 Eugene Chau
-Last edited 20 December 2017
-Version 0.1b
+Last edited 17 June 2020
+Version 1.0
 The player controls a red block with the arrow keys and must navigate
 through a sea of deadly enemy blocks to get to the green goal. Four challenging
 levels make up the world's truly hardest game!
 '''
 
 import pygame
+import os
+
+os.environ['SDL_VIDEO_CENTERED'] = '1'
 
 # Constants
 BLACK = (0, 0, 0)
